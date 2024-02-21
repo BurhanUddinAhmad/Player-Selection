@@ -21,28 +21,25 @@ for (const btn of allBtns) {
 
 
         // Total cost 
-        calc('total-cost', rate);
-        calc('grand-cost', rate);
+      cost("total-cost", rate);
+      grandCost();
+        
     });
 }
 
-// Cuopon code 
-const cuoponBtn = document.getElementById('apply-btn');
-cuoponBtn.addEventListener('click', function(e) {
-    const cuopon = e.target.parentNode.childNodes[1].value;
-    const totalCost = document.getElementById('total-cost');
-    const totalToInt = parseInt(totalCost.innerText);
+function grandCost(){
+    const totalCost = toInt("total-cost");
+    document.getElementById('grand-cost').innerText = totalCost;
+}
 
-    if(cuopon == 'love24') {
-        // calc('grand-cost', totalToInt * 0.5);
-        console.log(totalToInt * .5 );
-    }
-});
+function cost(id, value){
+    const totalCost = toInt(id);
+    const sum = totalCost + parseInt(value);
+    document.getElementById(id).innerText = sum;
+}
 
-
-
-function calc(id, value) {
-    const totalCost = document.getElementById(id);
-    const totalToInt = parseInt(totalCost.innerText);
-    totalCost.innerText = totalToInt + parseInt(value);
+function toInt(id) {
+    const price = document.getElementById(id).innerText;
+    const priceInt = parseInt(price);
+    return priceInt;
 }
