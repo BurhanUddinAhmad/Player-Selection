@@ -20,6 +20,9 @@ for (const btn of allBtns) {
             return;
         }
 
+        e.target.setAttribute('disabled', false);
+        e.target.parentNode.style.backgroundColor = "gray";
+
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
