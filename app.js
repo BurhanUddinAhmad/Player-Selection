@@ -28,10 +28,8 @@ for (const btn of allBtns) {
         tr.appendChild(td3);
         playerContainer.appendChild(tr);
 
-        // Update budget
-        // const budget = toInt('budget');
-        const budget = document.getElementById('budget').innerText;
-        document.getElementById.innerText = parseInt(budget) - parseInt(rate);
+        //Update budget
+        document.getElementById('budget').innerText = toInt('budget') - parseInt(rate);
 
         const cartCount = toInt('cart');
         document.getElementById('cart').innerText = cartCount + 1;
@@ -39,26 +37,24 @@ for (const btn of allBtns) {
         document.getElementById('left').innerText = leftCount -1;
         // Total cost 
       cost("total-cost", rate);
-      grandCost();
-        
+      grandCost();  
     });
 }
 
-function grandCost(status){
+function grandCost(){
     const totalCost = toInt("total-cost");
-    if(status == undefined) {
-        document.getElementById('grand-cost').innerText = totalCost; 
-    } else {
-        const cuoponInput = document.getElementById('coupon-input').value;
-
-        if(cuoponInput == "feb24") {
-            const discounts = totalCost * 0.2;
-            document.getElementById('grand-cost').innerText = totalCost - discounts; 
-        } else {
-            alert("Please enter a valid cuopon!");
-        }
-    }
+    document.getElementById('grand-cost').innerText = totalCost; 
 }
+const cuoponInput = document.getElementById('apply-btn');
+cuoponInput.addEventListener('click', function(e){
+    const cuopon = document.getElementById('coupon-input').value;
+    const totalCost = toInt("total-cost");
+    console.log(e.target.value);
+    if(cuopon == "feb24") {
+        const discounts = totalCost * 0.2;
+        document.getElementById('grand-cost').innerText = totalCost - discounts; 
+    }    
+});
 
 function cost(id, value){
     const totalCost = toInt(id);
